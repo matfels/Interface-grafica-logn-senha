@@ -1,0 +1,55 @@
+#===============CustomTkinter==============
+
+# Configuração aparência
+# Criação da Janela principal
+# Criação dos campos
+# Criação das funções de funcionalidades
+# Iniciar o loop da aplicação
+
+#===============CustomTkinter==============
+
+
+import customtkinter as ctk
+from validar_login import login
+
+# Configuração aparência
+ctk.set_appearance_mode('dark')
+
+
+# Criação da Janela principal
+app = ctk.CTk()
+app.title("Sistema de Login")
+app.geometry("300x300")
+
+
+# Criação das funções de funcionalidades
+def botao():
+    usuario = nome_usuario.get()
+    senha = senha_usuario.get()
+    
+    resultado_login.configure(text= f'{login(usuario, senha)}')
+
+
+# Criação dos campos
+
+# Pack = titulo / texto
+campo_usuario = ctk.CTkLabel(app, text="Usuário:") 
+campo_usuario.pack(pady = 10)
+
+nome_usuario = ctk.CTkEntry(app)
+nome_usuario.pack()
+
+campo_senha = ctk.CTkLabel(app, text= 'Senha:')
+campo_senha.pack(pady =10)
+
+senha_usuario = ctk.CTkEntry(app, show = '*')
+senha_usuario.pack()
+
+
+botao_ligin = ctk.CTkButton(app, text= "Login", command= botao)
+botao_ligin.pack(pady = 30)
+
+resultado_login = ctk.CTkLabel(app, text= " ")
+resultado_login.pack(pady = 10)
+
+app.mainloop()
